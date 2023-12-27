@@ -1,7 +1,7 @@
-DISTRO := poky
+DISTRO := birdycamcam
 
 image:
-	bitbake core-image-minimal
+	bitbake birdycamcam-image
 
 OB_BB_LAYERS += ${OB_ROOT_DIR}/platform/meta-birdycamcam
 

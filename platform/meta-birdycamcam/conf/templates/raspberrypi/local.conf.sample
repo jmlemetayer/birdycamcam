@@ -14,6 +14,9 @@ BB_DISKMON_DIRS ??= "\
     HALT,${SSTATE_DIR},100M,1K \
     HALT,/tmp,10M,1K"
 
+# Accepted licenses
+LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
+
 # Optional build configuration for the meta-raspberrypi layer:
 # https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html
 ENABLE_UART = "1"
