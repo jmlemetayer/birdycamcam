@@ -1,0 +1,21 @@
+# MediaMTX configuration for BirdyCamCam
+# Only non-default values are specified; everything else uses MediaMTX defaults.
+
+# RTSP: standard port 554, TCP only (no UDP, no multicast)
+rtspAddress: :554
+rtspTransports: [tcp]
+
+# HLS: standard HTTP port 80
+hlsAddress: :80
+hlsSegmentCount: 7
+hlsSegmentDuration: 3s
+hlsPartDuration: 500ms
+
+# Disable unused protocols
+rtmp: false
+webrtc: false
+srt: false
+
+# Accepted stream paths
+paths:
+  birdy:

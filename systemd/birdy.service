@@ -1,0 +1,21 @@
+[Unit]
+Description=Birdy webcam RTSP stream
+After=network.target mediamtx.service
+Requires=mediamtx.service
+ConditionPathExists=/etc/birdy/birdy.conf
+
+[Service]
+User=birdy
+EnvironmentFile=/etc/birdy/birdy.conf
+
+ExecStartPre=/bin/sh -c 'until arecord -D "${AUDIO_DEVICE}" -d 1 -q -f "${AUDIO_FORMAT}" /dev/null 2>/dev/null; do sleep 1; done'
+ExecStartPre=sleep 10
+ExecStart=/var/lib/birdy/ffmpeg.sh
+
+Restart=always
+RestartSec=1
+KillSignal=SIGINT
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

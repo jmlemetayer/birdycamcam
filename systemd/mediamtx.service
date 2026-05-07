@@ -1,0 +1,15 @@
+[Unit]
+Description=MediaMTX RTSP server
+After=network.target
+
+[Service]
+User=birdy
+WorkingDirectory=/var/lib/birdy
+ExecStart=/usr/local/bin/mediamtx /var/lib/birdy/mediamtx.yml
+Restart=always
+RestartSec=3
+TimeoutStopSec=5
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
