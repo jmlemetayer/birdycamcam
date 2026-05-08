@@ -8,7 +8,7 @@ stream over RTSP and HLS using FFmpeg and
 
 | Component | Details |
 |-----------|---------|
-| Board | Raspberry Pi 3B |
+| Board | Raspberry Pi 4 (2GB) |
 | Camera | Logitech C200 (any UVC-compatible webcam works) |
 
 ### Assembly
@@ -41,7 +41,7 @@ Mic     (ALSA) ──┘                                                  └─
 
 ## Setup
 
-Starting from a fresh Raspberry Pi OS (Debian 13 / aarch64) installation.
+Starting from a fresh Raspberry Pi OS Lite (Debian 13 / aarch64) installation.
 
 ### 1. System packages
 
@@ -97,11 +97,11 @@ these to set `AUDIO_FORMAT` and `AUDIO_SAMPLE_RATE` in the webcam conf file.
 ### 3. Install MediaMTX
 
 ```bash
-MEDIAMTX_VERSION=v1.17.1
-wget https://github.com/bluenviron/mediamtx/releases/download/${MEDIAMTX_VERSION}/mediamtx_${MEDIAMTX_VERSION}_linux_arm64v8.tar.gz
-tar xf mediamtx_${MEDIAMTX_VERSION}_linux_arm64v8.tar.gz mediamtx
+MEDIAMTX_VERSION=v1.18.1
+wget https://github.com/bluenviron/mediamtx/releases/download/${MEDIAMTX_VERSION}/mediamtx_${MEDIAMTX_VERSION}_linux_arm64.tar.gz
+tar xf mediamtx_${MEDIAMTX_VERSION}_linux_arm64.tar.gz mediamtx
 sudo install -m 755 mediamtx /usr/local/bin/mediamtx
-rm mediamtx mediamtx_${MEDIAMTX_VERSION}_linux_arm64v8.tar.gz
+rm mediamtx mediamtx_${MEDIAMTX_VERSION}_linux_arm64.tar.gz
 ```
 
 ### 4. Create the service user

@@ -6,10 +6,16 @@ ConditionPathExists=/etc/birdy/birdy.conf
 
 [Service]
 User=birdy
+Environment=VIDEO_SIZE=640x480
+Environment=VIDEO_FRAMERATE=30
+Environment=AUDIO_FORMAT=S16_LE
+Environment=AUDIO_SAMPLE_RATE=48000
+Environment=AUDIO_CHANNELS=1
+Environment=STARTUP_DELAY=10
 EnvironmentFile=/etc/birdy/birdy.conf
 
 ExecStartPre=/bin/sh -c 'until arecord -D "${AUDIO_DEVICE}" -d 1 -q -f "${AUDIO_FORMAT}" /dev/null 2>/dev/null; do sleep 1; done'
-ExecStartPre=sleep 10
+ExecStartPre=sleep ${STARTUP_DELAY}
 ExecStart=/var/lib/birdy/ffmpeg.sh
 
 Restart=always
